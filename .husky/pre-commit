@@ -1,0 +1,10 @@
+###
+ # @Descripttion: 
+ # @Author: OwenWong
+ # @Email: owen.cq.cn@gmail.com
+ # @Date: 2021-10-21 16:33:06
+### 
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
