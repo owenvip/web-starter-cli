@@ -7,13 +7,14 @@
 import path from 'path'
 import fs from 'fs-extra'
 import inquirer from 'inquirer'
-
+import Generator from './generator'
 interface Option {
   force?: boolean
-}
+} 
 
 async function init (name: string, options: Option) {
   const targetDir  = path.join(process.cwd(), name)
+  // 判断目录是否已经存在
   if (fs.existsSync(targetDir)) {
     if (options.force) {
       await fs.remove(targetDir)
@@ -22,17 +23,20 @@ async function init (name: string, options: Option) {
         {
           type: 'input',
           name: 'overwrite',
-          message: 'target directory already exists, overwrite it?(y/n)',
-          default: 'n'
+          message: 'directory already exists, overwrite it?(y/n)',
         }
       ])
-      if (!overwrite) {
-        return;
-      } else if (overwrite.toLocaleLowerCase() === 'y') {
+      if (overwrite.toLocaleLowerCase() === 'y') {
         await fs.remove(targetDir)
+      } else {
+        return
       }
     }
   }
+  // 创建项目
+  const generator = new Generator(name, targetDir);
+  // 开始创建项目
+  generator.create()
 }
 
 export default init

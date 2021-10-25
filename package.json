@@ -33,12 +33,14 @@
   },
   "homepage": "https://github.com/owenvip/web-starter-cli#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^8.2.0",
+    "download-git-repo": "^3.0.2",
     "fs-extra": "^10.0.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "ora": "^5.4.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
     "@otools/babel-preset-otool": "^0.0.12",
     "@otools/jest-preset-otool": "^0.0.12",
     "@otools/prettier-config-config": "^0.1.2",
